@@ -339,8 +339,12 @@ Prism.languages.r = {
     pattern: /(["'])(?:\\.|(?!\1)[^\\\r\n])*\1/,
     greedy: true
   },
-  'keyword': /\b(if|else|repeat|while|function|for|in|next|break|TRUE|FALSE|NULL|library)\b/,
+  'keyword': /\b(if|else|repeat|return|while|function|for|in|next|break|TRUE|FALSE|NULL|library)\b/,
   'number': /\b-?(0x)?\d*\.?\d+([eE][+-]?\d+)?\b/,
-  'operator': /<-|==|!=|<=|>=|<-|&&|\|\||[+\-*\/^$@]/,
+  'operator': {
+		pattern: /([^\.]|^)([-+]{1,2}|!|=?&lt;|=?&gt;|={1,2}|(&amp;){1,2}|\|?\||\?|\*|\/|%|\^|(&lt;){2}|($gt;){2,3}|:|~)/g,
+		lookbehind: true
+	},
   'punctuation': /[(){}\[\],;]/
 };
+
